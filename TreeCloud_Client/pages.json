@@ -1,0 +1,43 @@
+{
+	"pages": [{
+			"path": "pages/index/index"
+		},
+		{
+			"path": "pages/tree/TreeFrom/TreeFrom"
+		},
+		{
+			"path": "pages/user/register/register"
+		},
+		{
+			"path": "pages/user/login/login"
+		},
+		{
+			"path": "pages/user/center/center"
+		},
+		{
+			"path": "pages/tree/TreeList/TreeList"
+		},
+		{
+			"path": "pages/tree/TreeDetail/TreeDetail"
+		},
+		{
+			"path": "pages/user/UpdateInfo/UpdateInfo"
+		},
+		{
+			"path": "pages/user/UserList/UserList"
+		},
+		{
+			"path": "pages/user/UserDeail/UserDeail"
+		}
+	],
+	"globalStyle": {
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

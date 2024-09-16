@@ -1,0 +1,78 @@
+.treelist-item {
+	width: 295rpx;
+	padding: 20rpx;
+	background-color: white;
+	border-radius: 8px;
+	margin-bottom: 30rpx;
+	height: fit-content;
+}
+
+.treelist-image image {
+	width: 140rpx;
+	height: 140rpx;
+}
+
+
+.list-text view {
+	margin-bottom: 0;
+}
+
+/* 消除插槽的样式影响 */
+.list-text :nth-child(1) {
+	margin-bottom: 0;
+}
+
+.list-text :nth-child(1) {
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.list-text :nth-child(2) {
+	margin-top: 20rpx;
+	font-size: 12px;
+	padding: 8rpx;
+	background-color: #e7f5fe;
+	color: #458dda;
+	border: 1px solid #458dda;
+	text-align: center;
+	border-radius: 5px;
+	margin-bottom: 25rpx;
+	font-weight: normal;
+}
+
+.list-text :nth-child(3) {
+	font-size: 12px;
+	padding: 8rpx;
+	background-color: #fff9e3;
+	color: #cfb868;
+	border: 1px solid #cfb868;
+	text-align: center;
+	border-radius: 5px;
+	margin-bottom: 20rpx;
+	font-weight: normal;
+}
+
+.list-text :nth-child(4) {
+	font-size: 17px;
+	font-weight: 700;
+	color: #dc0000;
+}
+
+.item-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.btn {
+	text-align: center;
+	padding: 25rpx;
+	padding-top: 15rpx;
+	padding-bottom: 15rpx;
+	margin-top: 15rpx;
+	margin-bottom: 10rpx;
+	background-color: #48a77e;
+	color: white;
+	font-weight: 700;
+	border-radius: 5px;
+}
