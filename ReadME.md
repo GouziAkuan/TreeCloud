@@ -2,7 +2,7 @@
 
 ---
 
-![云端林场 Logo]()(/images/logo.jpg)
+![云端林场 Logo]()(https://s21.ax1x.com/2024/09/16/pAu7sje.jpg)
 
 [![Build Status](https://travis-ci.org/cloudforest/cloudforest.svg?branch=master)](https://travis-ci.org/cloudforest/cloudforest)
 [![Coverage Status](https://coveralls.io/repos/github/cloudforest/cloudforest/badge.svg?branch=master)](https://coveralls.io/github/cloudforest/cloudforest?branch=master)
