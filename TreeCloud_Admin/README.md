@@ -1,6 +1,6 @@
 # TreeCloud_Admin
 
-这是一个基于 Vue 3 和 Vite 开发的云端林场管理端模板。
+这是一个基于 Vue 3 和 Vite 开发的云端林场管理端。
 
 ## 推荐的 IDE 配置
 
