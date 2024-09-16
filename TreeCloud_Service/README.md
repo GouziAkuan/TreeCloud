@@ -1,6 +1,3 @@
-明白了，我们来调整一下，使其更加连贯和清晰。以下是调整后的 `README.md` 文件：
-
-````markdown
 # TreeCloud 服务端
 
 这是一个基于 Nest.js、TypeORM、MySQL 和 TypeScript 开发的云端林场服务端。
@@ -18,7 +15,6 @@
 ```sh
 npm install
 ```
-````
 
 ### 启动开发服务器
 
