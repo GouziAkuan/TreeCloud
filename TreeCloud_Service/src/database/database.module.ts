@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService, ConfigModule } from '@nestjs/config';
+import { createConnection } from 'mysql2/promise'; // 导入 mysql2/promise
 import { UserEntity } from './entities/user.entity';
 import { TreeEntity } from './entities/trees.entity';
 import { TreeImagesEntity } from './entities/treeImages.entity';
@@ -21,16 +22,37 @@ import { TreeTypeEntity } from './entities/treeType.entity';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
-        type: 'mysql',
-        host: configService.get<string>('DB_HOST'),
-        port: +configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
-        synchronize: true, // 在开发时可以使用，生产环境建议设为 false
-        autoLoadEntities: true,
-      }),
+      useFactory: async (configService: ConfigService) => {
+        const host = configService.get<string>('DB_HOST');
+        const port = +configService.get<number>('DB_PORT');
+        const username = configService.get<string>('DB_USERNAME');
+        const password = configService.get<string>('DB_PASSWORD');
+        const database = configService.get<string>('DB_DATABASE');
+
+        // 检查并创建数据库
+        const connection = await createConnection({
+          host,
+          port,
+          user: username,
+          password,
+        });
+
+        await connection.query(
+          `CREATE DATABASE IF NOT EXISTS \`${database}\`;`,
+        );
+        await connection.end();
+
+        return {
+          type: 'mysql',
+          host,
+          port,
+          username,
+          password,
+          database,
+          synchronize: true, // 在开发时可以使用，生产环境建议设为 false
+          autoLoadEntities: true,
+        };
+      },
     }),
     /**
      * 注册实体模块，使得TypeORM可以管理这些实体。
