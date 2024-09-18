@@ -2,6 +2,7 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  IsUrl,
   Matches,
   ValidateIf,
 } from 'class-validator';
@@ -21,7 +22,7 @@ class UsersCreateDto {
   @IsOptional()
   @ValidateIf((o) => o.avatar !== '') // 只有当avatar不为空字符串时，才执行后续验证
   @IsString()
-  @Matches(/^(http|https):\/\/[^\s]+$/, { message: '头像 URL 格式不正确' })
+  @IsUrl({}, { message: '头像 URL 格式不正确' })
   avatar?: string;
 
   @IsNotEmpty({ message: '手机号不能为空' })
@@ -49,7 +50,7 @@ class UpdateInfoDto {
 
   @IsNotEmpty({ message: '头像不能为空' })
   @IsString()
-  @Matches(/^(http|https):\/\/[^\s]+$/, { message: '头像 URL 格式不正确' })
+  @IsUrl({}, { message: '头像 URL 格式不正确' })
   avatar: string;
 
   @IsNotEmpty({ message: '手机号不能为空' })
