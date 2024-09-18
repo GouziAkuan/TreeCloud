@@ -69,7 +69,7 @@ const select = async (e) => {
 	}
 	const tempFilePaths = e.tempFilePaths;
 	const res = await uni.uploadFile({
-		url: `${BaseUrl}/uploadFile`,
+		url: `${BaseUrl}/file/upload`,
 		filePath: tempFilePaths[0],
 		name: 'file'
 	});
