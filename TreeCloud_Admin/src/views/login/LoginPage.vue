@@ -1,5 +1,6 @@
 <script setup>
 import LoginForm from '@/components/login/LoginForm.vue'
+import logo from '@/assets/images/logo.jpg'
 </script>
 
 <template>
@@ -10,7 +11,7 @@ import LoginForm from '@/components/login/LoginForm.vue'
         <el-card style="width: 100%" shadow="always">
           <div class="login-all">
             <div class="login-header">
-              <el-image style="width: 80px; height: 80px;margin-right: 20px;" src="/src/assets/images/logo.jpg" />
+              <el-image style="width: 80px; height: 80px; margin-right: 20px" :src="logo" />
               <h1>云端林场后台管理系统</h1>
             </div>
             <LoginForm />

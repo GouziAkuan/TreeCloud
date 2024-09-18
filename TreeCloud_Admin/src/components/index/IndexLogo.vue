@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+import logo from '@/assets/images/logo.jpg'
+</script>
 <template>
   <div class="logo-box">
     <!-- logo部分 -->
     <el-col class="logo-box">
-      <el-image src="/src/assets/images/logo.jpg" class="logo" :fit="cover" />
+      <el-image :src="logo" class="logo" :fit="cover" />
       <h3 class="logo-title">云端林场后台管理系统</h3>
     </el-col>
   </div>
