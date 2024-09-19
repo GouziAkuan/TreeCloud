@@ -82,13 +82,21 @@ export class TreeService {
     adoptInfo: AdoptTreeDto,
     userId: number,
   ): Promise<AdoptTreeRequestDto> {
-    // 养树木数量处理
-    const adoptionTreeInfo: AdoptTreeNumberRequestDto =
-      await this.adoptTreeNumber(adoptInfo.treeTypeID);
-    // 生成独特的领养编号
-    const adoptionID = await this.getAdoptionsID(adoptionTreeInfo);
-    // 插入领养信息
+    const queryRunner =
+      this.adoptionsRepository.manager.connection.createQueryRunner();
+
+    // 开始事务
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
     try {
+      // 养树木数量处理
+      const adoptionTreeInfo: AdoptTreeNumberRequestDto =
+        await this.adoptTreeNumber(adoptInfo.treeTypeID);
+      // 生成独特的领养编号
+      const adoptionID = await this.getAdoptionsID(adoptionTreeInfo);
+
+      // 插入领养信息
       await this.adoptionsRepository.insert({
         nickname: adoptInfo.nickName,
         tree_type: adoptInfo.treeType,
@@ -98,21 +106,29 @@ export class TreeService {
         tree: { id: adoptionTreeInfo.treeId },
         type_id: { id: adoptInfo.treeTypeID },
       });
+
+      // 提交事务
+      await queryRunner.commitTransaction();
+
+      return {
+        status: HttpStatus.OK,
+        code: 0,
+        message: '领养成功',
+        data: {
+          adoptionID,
+          nickName: adoptInfo.nickName,
+          treeType: adoptInfo.treeType,
+        },
+      };
     } catch (error) {
+      // 事务回滚
+      await queryRunner.rollbackTransaction();
       console.log(error);
       throw new BadAdoptException();
+    } finally {
+      // 释放事务
+      await queryRunner.release();
     }
-
-    return {
-      status: HttpStatus.OK,
-      code: 0,
-      message: '领养成功',
-      data: {
-        adoptionID,
-        nickName: adoptInfo.nickName,
-        treeType: adoptInfo.treeType,
-      },
-    };
   }
 
   // 生成独特的领养编号
