@@ -87,7 +87,7 @@ onLoad((options) => {
 						<view class="main">
 							<view class="sb">
 								<image src="https://s21.ax1x.com/2024/09/15/pAuymjK.png"></image>
-								<text>树木种植</text>
+								<text>树木数量</text>
 							</view>
 							<text class="dada">70颗</text>
 						</view>
